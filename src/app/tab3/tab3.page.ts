@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { Router } from '@angular/router';
 import { FotoService } from '../services/foto.service';
 
 @Component({
@@ -10,10 +11,12 @@ import { FotoService } from '../services/foto.service';
 export class Tab3Page {
 
   urlImageStorage : string[] = [];
+  nameImageStorage : string[] = [];
 
   constructor(
     private afStorage : AngularFireStorage,
-    public fotoService : FotoService) 
+    public fotoService : FotoService,
+    private router : Router) 
   {
 
   }
@@ -29,10 +32,12 @@ export class Tab3Page {
 
   tampilkanData(){
     this.urlImageStorage = [];
+    this.nameImageStorage = [];
     var refImage = this.afStorage.storage.ref('imgStorage');
     refImage.listAll()
     .then((res)=>{
       res.items.forEach((itemRef)=>{
+        this.nameImageStorage.unshift(itemRef.name);
         itemRef.getDownloadURL().then(url => {
           this.urlImageStorage.unshift(url);
         })
@@ -40,5 +45,9 @@ export class Tab3Page {
     }).catch((error)=>{
       console.log(error);
     })
+  }
+
+  lihatDetail(i){
+    this.router.navigate(["/tab4/" + i]);
   }
 }
