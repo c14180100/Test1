@@ -8,7 +8,7 @@
 
 <ion-content [fullscreen]="true">
   <ion-list>
-    <ion-item *ngFor="let iFoto of urlImageStorage; let i = index;" (click)="lihatDetail(i)">
+    <ion-item *ngFor="let iFoto of urlImageStorage; let i = index;" (click)="lihatDetail(iFoto)">
         <ion-img [src]="iFoto"></ion-img>
         <p>{{nameImageStorage[i]}}</p>
     </ion-item>

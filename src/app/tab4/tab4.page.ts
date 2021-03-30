@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tab4',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Tab4Page implements OnInit {
 
-  constructor() { }
+  urlImage : string;
+
+  constructor(public route : ActivatedRoute) { }
 
   ngOnInit() {
+    this.urlImage = this.route.snapshot.paramMap.get('iFoto');
   }
 
 }

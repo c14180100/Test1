@@ -47,7 +47,7 @@ export class Tab3Page {
     })
   }
 
-  lihatDetail(i){
-    this.router.navigate(["/tab4/" + i]);
+  lihatDetail(iFoto){
+    this.router.navigate(["/tab4/" + iFoto]);
   }
 }
